@@ -9,8 +9,8 @@ Webiste :-
 1. An aws account
 2. Terraform and aws cli installed , or
 3. Use git codespace with aws cli and terraform installed
-4. git cli installed ( Optional )
-5. A website template ( As we are learning terraform and aws s3 here and not html )
+4. Git cli installed ( Optional )
+5. A website template from Templated.co ( As we are learning terraform and aws s3 here and not html )
 
 # Dir Structure
 
