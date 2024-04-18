@@ -61,6 +61,7 @@ resource "aws_s3_bucket_ownership_controls" "website-saif-ownership" {
 
 Resource **ownership control** is defined with name **website-saif-ownership**, bucket name is supplied and rule is set to **object_ownership = "BucketOwnerPreferred"** which means when objects will be added into bucket the owner will be bucket owner and not the object owner who added object into the bucket.
 
+```terraform
 resource "aws_s3_bucket_public_access_block" "website-saif-public" {
   bucket = aws_s3_bucket.website-saif.id
   block_public_acls       = false
@@ -68,7 +69,9 @@ resource "aws_s3_bucket_public_access_block" "website-saif-public" {
   ignore_public_acls      = false
   restrict_public_buckets = false
 }
+```
 
+```terraform
 resource "aws_s3_bucket_acl" "website-saif-acl" {
   depends_on = [ 
     aws_s3_bucket_ownership_controls.website-saif-ownership,
@@ -77,7 +80,9 @@ resource "aws_s3_bucket_acl" "website-saif-acl" {
    bucket = aws_s3_bucket.website-saif.id
    acl = "public-read"
 }
+```
 
+```terraform
 resource "aws_s3_bucket_policy" "host_bucket_policy" {
   bucket =  aws_s3_bucket.website-saif.id # ID of the S3 bucket
 
@@ -94,7 +99,9 @@ resource "aws_s3_bucket_policy" "host_bucket_policy" {
     ]
   })
 }
+```
 
+```terraform
 resource "aws_s3_bucket_website_configuration" "webiste-saif-config" {
   bucket = aws_s3_bucket.website-saif.id
 
@@ -102,14 +109,17 @@ resource "aws_s3_bucket_website_configuration" "webiste-saif-config" {
     suffix = "index.html"
   }
 }
+```
 
-
+```terraform
 module "template_files" {
     source = "hashicorp/dir/template"
 
     base_dir = "${path.module}/web-files"
 }
+```
 
+```terraform
 resource "aws_s3_object" "Bucket_files" {
   bucket =  aws_s3_bucket.website-saif.id  # ID of the S3 bucket
 
