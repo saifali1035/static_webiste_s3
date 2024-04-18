@@ -90,7 +90,7 @@ resource "aws_s3_bucket_acl" "website-saif-acl" {
 ```
 ![image](https://github.com/Tech-With-Helen/static-website-aws/assets/37189361/788d08c5-7ba0-4aae-94ee-5d1abccabd51)
 
-Resource **Bucket acl** is defined with name **website-saif-acl**, bucket name is supplied and acl to set to **public-read** which means **anyone can list the objects from the bucket**
+Resource **Bucket acl** is defined with name **website-saif-acl**, bucket name is supplied and acl to set to **public-read** which means **anyone can list the bucket**
 It depends on above two resources.
 
 
@@ -113,6 +113,12 @@ resource "aws_s3_bucket_policy" "host_bucket_policy" {
 }
 ```
 
+![image](https://github.com/Tech-With-Helen/static-website-aws/assets/37189361/a2c66f59-7f0c-45e5-b7ea-e2a56b0d0454)
+
+Resource **Bucket policy** is defined with name **website-saif-acl**, bucket name is supplied and read access is set on all the objects inside the bucket.
+
+
+
 ```terraform
 resource "aws_s3_bucket_website_configuration" "webiste-saif-config" {
   bucket = aws_s3_bucket.website-saif.id
@@ -122,6 +128,7 @@ resource "aws_s3_bucket_website_configuration" "webiste-saif-config" {
   }
 }
 ```
+
 ![image](https://github.com/Tech-With-Helen/static-website-aws/assets/37189361/0dba06e5-5a87-4048-9c54-9ad2e9dcf9d2)
 
 Resource **website configuration** is defined with name **website-saif-config**, bucket name is supplied and rule is set for index document with name as index.html.
