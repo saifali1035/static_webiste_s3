@@ -31,7 +31,7 @@ variable "my_bucket_name" {
     default = "demo-terraform-bucket18april2023"
 }
 ```
-We will start by creating our variable named **my_bucket_name**
+We will start by creating our variable named **my_bucket_name**, as clear by name it will hold **the name of our s3 bucket**
 
 
 
