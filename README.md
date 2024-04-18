@@ -47,14 +47,19 @@ resource "aws_s3_bucket" "website-saif" {
   bucket = var.my_bucket_name
 }
 ```
-Resource is defined with name **website-saif**, this name will be used throughout the file to use the bucket.
+Resource **s3 bucket** is defined with name **website-saif**, this name will be used throughout the file to use the bucket.
 
+```terraform
 resource "aws_s3_bucket_ownership_controls" "website-saif-ownership" {
   bucket = aws_s3_bucket.website-saif.id
   rule {
     object_ownership = "BucketOwnerPreferred"
   }
 }
+```
+![image](https://github.com/Tech-With-Helen/static-website-aws/assets/37189361/39fc5458-dbbf-4a96-aab3-926a85517108)
+
+Resource **ownership control** is defined with name **website-saif-ownership**, bucket name is supplied and rule is set to **object_ownership = "BucketOwnerPreferred"** which means when objects will be added into bucket the owner will be bucket owner and not the object owner who added object into the bucket.
 
 resource "aws_s3_bucket_public_access_block" "website-saif-public" {
   bucket = aws_s3_bucket.website-saif.id
