@@ -20,6 +20,7 @@ We will have 3 main terraform files , namely
 1. website.tf - main tf file and can be named anything , conatins s3 configuration and webiste configuration.
 2. variable.tf - bucket name is set as variable so it can be easily renamed.
 3. output.tf - output file give us the URL.
+We have one dir named web-files, which will have out website related files.
 
 
 
