@@ -74,6 +74,7 @@ resource "aws_s3_bucket_public_access_block" "website-saif-public" {
 
 Resource **public access block** is defined with name **website-saif-public**, bucket name is supplied and all 4 available options are set to **false** which are by default **true** which will **make the bucket public**.
 You will see this red niotification on top of your bucket name which says its public.
+
 ![image](https://github.com/Tech-With-Helen/static-website-aws/assets/37189361/85c94ea2-257e-4f75-adc9-ce205cb92926)
 
 
@@ -87,6 +88,11 @@ resource "aws_s3_bucket_acl" "website-saif-acl" {
    acl = "public-read"
 }
 ```
+![image](https://github.com/Tech-With-Helen/static-website-aws/assets/37189361/788d08c5-7ba0-4aae-94ee-5d1abccabd51)
+
+Resource **Bucket acl** is defined with name **website-saif-acl**, bucket name is supplied and acl to set to **public-read** which means **anyone can list the objects from the bucket**
+It depends on above two resources.
+
 
 ```terraform
 resource "aws_s3_bucket_policy" "host_bucket_policy" {
