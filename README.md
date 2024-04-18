@@ -22,5 +22,15 @@ We will have 3 main terraform files , namely
 3. output.tf - output file give us the URL.
 We have one dir named web-files, which will have out website related files.
 
+# variables.tf
+
+```
+variable "my_bucket_name" {
+    description = "my-static-web-18-April"
+    type = string
+    default = "demo-terraform-bucket18april2023"
+}
+```
+
 
 
