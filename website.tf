@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "website-saif" {
-  bucket = "website-saif"
+  bucket = var.my_bucket_name
 }
 
 resource "aws_s3_bucket_ownership_controls" "website-saif-ownership" {
@@ -41,7 +41,7 @@ resource "aws_s3_bucket_policy" "host_bucket_policy" {
         "Effect" : "Allow",
         "Principal" : "*",
         "Action" : "s3:GetObject",
-        "Resource": "arn:aws:s3:::website-saif/*"
+        "Resource": "arn:aws:s3:::${var.my_bucket_name}/*"
       }
     ]
   })
@@ -55,9 +55,23 @@ resource "aws_s3_bucket_website_configuration" "webiste-saif-config" {
   }
 }
 
-resource "aws_s3_object" "website-saif-object" {
- bucket = aws_s3_bucket.website-saif.id
 
- key = "index.html"
- source = "./index.html"
+module "template_files" {
+    source = "hashicorp/dir/template"
+
+    base_dir = "${path.module}/web-files"
+}
+
+resource "aws_s3_object" "Bucket_files" {
+  bucket =  aws_s3_bucket.website-saif.id  # ID of the S3 bucket
+
+  for_each     = module.template_files.files
+  key          = each.key
+  content_type = each.value.content_type
+
+  source  = each.value.source_path
+  content = each.value.content
+
+  # ETag of the S3 object
+  etag = each.value.digests.md5
 }
