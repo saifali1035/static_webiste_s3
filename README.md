@@ -39,10 +39,15 @@ We will start by creating our variable named **my_bucket_name**, as clear by nam
 provider "aws" {
   region = "ap-south-1"
 }
+```
+This can be a seperate file by itself with name **providers.tf**, i decided to add this in same file.
 
+```terraform
 resource "aws_s3_bucket" "website-saif" {
   bucket = var.my_bucket_name
 }
+```
+Resource is defined with name **website-saif**, this name will be used throughout the file to use the bucket.
 
 resource "aws_s3_bucket_ownership_controls" "website-saif-ownership" {
   bucket = aws_s3_bucket.website-saif.id
