@@ -122,6 +122,10 @@ resource "aws_s3_bucket_website_configuration" "webiste-saif-config" {
   }
 }
 ```
+![image](https://github.com/Tech-With-Helen/static-website-aws/assets/37189361/0dba06e5-5a87-4048-9c54-9ad2e9dcf9d2)
+
+Resource **website configuration** is defined with name **website-saif-config**, bucket name is supplied and rule is set for index document with name as index.html.
+Error document can also be defined but is optional.
 
 ```terraform
 module "template_files" {
