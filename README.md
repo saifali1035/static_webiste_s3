@@ -150,6 +150,18 @@ resource "aws_s3_object" "Bucket_files" {
   etag = each.value.digests.md5
 }
 ```
+# output.tf
+
+```terraform
+output "website_url" {
+    description = "My website URL"
+    value = aws_s3_bucket_website_configuration.webiste-saif-config.website_endpoint
+}
+```
+![image](https://github.com/Tech-With-Helen/static-website-aws/assets/37189361/b4d19df1-ee05-435a-ac49-148dc7309727)
+
+We will get our webiste URL with this.
+
 
 
 
