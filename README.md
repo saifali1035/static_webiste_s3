@@ -24,7 +24,7 @@ We have one dir named web-files, which will have out website related files.
 
 # variables.tf
 
-```
+```terraform
 variable "my_bucket_name" {
     description = "my-static-web-18-April"
     type = string
