@@ -70,6 +70,12 @@ resource "aws_s3_bucket_public_access_block" "website-saif-public" {
   restrict_public_buckets = false
 }
 ```
+![image](https://github.com/Tech-With-Helen/static-website-aws/assets/37189361/be9b378b-8db0-4817-bac3-fb467da109a1)
+
+Resource **public access block** is defined with name **website-saif-public**, bucket name is supplied and all 4 available options are set to **false** which are by default **true** which will **make the bucket public**.
+You will see this red niotification on top of your bucket name which says its public.
+![image](https://github.com/Tech-With-Helen/static-website-aws/assets/37189361/85c94ea2-257e-4f75-adc9-ce205cb92926)
+
 
 ```terraform
 resource "aws_s3_bucket_acl" "website-saif-acl" {
